@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Carnet géo</string>
+
+    <!-- Navigation -->
+    <string name="tab_notes">Notes</string>
+    <string name="tab_map">Carte</string>
+    <string name="tab_settings">Paramètres</string>
+    <string name="action_back">Retour</string>
+
+    <!-- Liste -->
+    <string name="list_title">Mes notes</string>
+    <string name="list_new_note">Nouvelle note</string>
+    <string name="list_empty">Aucune note pour l\'instant.\nAppuyez sur « Nouvelle note » pour commencer.</string>
+    <string name="note_located">Note géolocalisée</string>
+
+    <!-- Ajout -->
+    <string name="add_title">Nouvelle note</string>
+    <string name="add_field_title">Titre *</string>
+    <string name="add_field_content">Contenu</string>
+    <string name="add_photo">Photo</string>
+    <string name="add_photo_camera">Appareil photo</string>
+    <string name="add_photo_gallery">Galerie</string>
+    <string name="add_photo_remove">Retirer la photo</string>
+    <string name="add_location">Position</string>
+    <string name="add_location_searching">Recherche de la position…</string>
+    <string name="add_location_unknown">Position inconnue</string>
+    <string name="add_location_refresh">Actualiser la position</string>
+    <string name="add_save">Enregistrer la note</string>
+    <string name="error_location_permission">Permission de localisation refusée</string>
+    <string name="error_location_unavailable">Position indisponible</string>
+
+    <!-- Détail -->
+    <string name="detail_title">Détail</string>
+    <string name="detail_delete">Supprimer</string>
+    <string name="detail_no_location">Pas de position enregistrée</string>
+    <string name="detail_delete_title">Supprimer la note ?</string>
+    <string name="detail_delete_message">Cette action est définitive.</string>
+    <string name="action_cancel">Annuler</string>
+    <string name="note_photo">Photo de la note</string>
+
+    <!-- Carte -->
+    <string name="map_title">Carte des notes</string>
+    <string name="map_empty">Aucune note géolocalisée</string>
+    <string name="map_open_note">Voir la note</string>
+
+    <!-- Paramètres -->
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_language">Langue</string>
+    <string name="language_system">Langue du système</string>
+</resources>

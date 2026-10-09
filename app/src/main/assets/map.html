@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
+    <style>
+        html, body, #map { height: 100%; margin: 0; padding: 0; }
+        .popup-title { font-weight: 600; font-size: 15px; }
+        .popup-date { color: #666; font-size: 12px; margin-top: 2px; }
+        .popup-open {
+            display: inline-block; margin-top: 8px; padding: 6px 14px;
+            border: none; border-radius: 16px; background: #415f91; color: #fff; font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script src="leaflet/leaflet.js"></script>
+<script>
+    // URL des tuiles : OpenStreetMap (sans clé).
+    // Pour Mapbox : 'https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/{z}/{x}/{y}?access_token=VOTRE_TOKEN'
+    var TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
+    var map = L.map('map', { zoomControl: true }).setView([46.6, 2.4], 5);
+    L.tileLayer(TILE_URL, { maxZoom: 19, attribution: ATTRIBUTION }).addTo(map);
+    var markers = L.featureGroup().addTo(map);
+
+    function popupContent(note, openLabel, clickable) {
+        var div = document.createElement('div');
+        var title = document.createElement('div');
+        title.className = 'popup-title';
+        title.textContent = note.title;
+        var date = document.createElement('div');
+        date.className = 'popup-date';
+        date.textContent = note.date;
+        div.appendChild(title);
+        div.appendChild(date);
+        if (clickable) {
+            var btn = document.createElement('button');
+            btn.className = 'popup-open';
+            btn.textContent = openLabel;
+            btn.onclick = function () { AndroidBridge.onNoteClick(String(note.id)); };
+            div.appendChild(btn);
+        }
+        return div;
+    }
+
+    /**
+     * Appelé depuis Kotlin.
+     * notes : [{id, title, date, lat, lng}], zoom : zoom si une seule note,
+     * clickable : afficher le bouton d'ouverture, openLabel : texte traduit du bouton.
+     */
+    function setNotes(notes, zoom, clickable, openLabel) {
+        markers.clearLayers();
+        notes.forEach(function (note) {
+            L.marker([note.lat, note.lng])
+                .bindPopup(popupContent(note, openLabel, clickable))
+                .addTo(markers);
+        });
+        if (notes.length === 1) {
+            map.setView([notes[0].lat, notes[0].lng], zoom);
+        } else if (notes.length > 1) {
+            map.fitBounds(markers.getBounds(), { padding: [40, 40], maxZoom: zoom });
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Geo Notes</string>
+
+    <!-- Navigation -->
+    <string name="tab_notes">Notes</string>
+    <string name="tab_map">Map</string>
+    <string name="tab_settings">Settings</string>
+    <string name="action_back">Back</string>
+
+    <!-- Liste -->
+    <string name="list_title">My notes</string>
+    <string name="list_new_note">New note</string>
+    <string name="list_empty">No notes yet.\nTap “New note” to get started.</string>
+    <string name="note_located">Geotagged note</string>
+
+    <!-- Ajout -->
+    <string name="add_title">New note</string>
+    <string name="add_field_title">Title *</string>
+    <string name="add_field_content">Content</string>
+    <string name="add_photo">Photo</string>
+    <string name="add_photo_camera">Camera</string>
+    <string name="add_photo_gallery">Gallery</string>
+    <string name="add_photo_remove">Remove photo</string>
+    <string name="add_location">Location</string>
+    <string name="add_location_searching">Getting location…</string>
+    <string name="add_location_unknown">Unknown location</string>
+    <string name="add_location_refresh">Refresh location</string>
+    <string name="add_save">Save note</string>
+    <string name="error_location_permission">Location permission denied</string>
+    <string name="error_location_unavailable">Location unavailable</string>
+
+    <!-- Détail -->
+    <string name="detail_title">Details</string>
+    <string name="detail_delete">Delete</string>
+    <string name="detail_no_location">No location saved</string>
+    <string name="detail_delete_title">Delete this note?</string>
+    <string name="detail_delete_message">This cannot be undone.</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="note_photo">Note photo</string>
+
+    <!-- Carte -->
+    <string name="map_title">Notes map</string>
+    <string name="map_empty">No geotagged notes</string>
+    <string name="map_open_note">Open note</string>
+
+    <!-- Paramètres -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_language">Language</string>
+    <string name="language_system">System default</string>
+</resources>
