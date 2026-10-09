@@ -35,13 +35,18 @@ avds:
 devices:
 	@& '$(ADB)' devices
 
-emulator:
-	@if (& '$(ADB)' devices | Select-String 'device$$') { Write-Host 'Un appareil est deja connecte.'; exit 0 }; \
+# Script sur plusieurs lignes : dans une variable, make fusionne les "\" en une seule ligne
+# (dans une recette, il les transmettrait tels quels à PowerShell).
+START_EMULATOR = \
+	if (& '$(ADB)' devices | Select-String 'device$$') { Write-Host 'Un appareil est deja connecte.'; exit 0 }; \
 	Write-Host 'Demarrage de l emulateur $(AVD)...'; \
 	Start-Process -FilePath '$(EMULATOR)' -ArgumentList '-avd','$(AVD)'; \
 	& '$(ADB)' wait-for-device; \
 	while ("$$(& '$(ADB)' shell getprop sys.boot_completed)".Trim() -ne '1') { Start-Sleep -Seconds 2 }; \
 	Write-Host 'Emulateur pret.'
+
+emulator:
+	@$(START_EMULATOR)
 
 run:
 	@if (-not (& '$(ADB)' devices | Select-String 'device$$')) { Write-Host 'Aucun appareil connecte : lance d abord make emulator (ou make start).'; exit 1 }
